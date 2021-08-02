@@ -1,0 +1,15 @@
+# Testing If statements
+
+fun main() int {
+    return other(7, true);
+}
+
+fun other(int a, bool b) int {
+    if (b) {
+        return 0;
+    } else {
+        return a;
+    }
+    # This should never be reached
+    return 20;
+}

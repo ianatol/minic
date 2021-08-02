@@ -1,0 +1,10 @@
+# Testing a void function call
+
+fun main() int {
+    other();
+    return 0;
+}
+
+fun other() void {
+    return;
+}

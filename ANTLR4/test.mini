@@ -1,0 +1,39 @@
+
+struct blarf {
+    int a;
+    bool b;
+};
+
+int a,c;
+bool b,d;
+
+fun main(int a, bool b) void { 
+    print 1;
+    print a + x;
+    print a + x endl ;
+   a = 1;
+   x = 999;
+   x.a = 123; # Dotted lvalue
+   x = y.a; # Dotted expr
+   a = new A; # new structs
+   a.a = new A; # dotted assignment to new struct
+   x = read; # Read assignment
+   a.a = read; # Read into dotted lvalue
+   print 123;
+   {
+       b = 1;
+       b = 2 + 1;
+   }
+   if (123) { print 1; }
+   print 12123;
+   if (123) { print 1; } else { print 2; }
+   while(true) { print 1;}
+   delete a;
+   delete 3 + 2;
+   return;
+   return 8;
+   return (a+d-3);
+
+   my_func();
+   x = my_func();
+}

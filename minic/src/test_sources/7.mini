@@ -1,0 +1,24 @@
+
+struct A {
+    int a;
+    bool b;
+};
+
+struct B {
+    struct A nested;
+};
+
+fun main() int {
+    struct A a;
+    struct B b;
+    int d;
+
+    a = new A;
+    a.a = read;
+    b = new B;
+    b.nested = new A;
+    b.nested.a = a.a;
+    print b.nested.a endl;
+    d = 4321;
+    return 0;
+}

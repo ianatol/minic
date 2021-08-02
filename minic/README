@@ -1,0 +1,68 @@
+Instructions for using our compiler
+----------------------------------
+
+- From the folder containing the minic and ANTLR4 folders,
+    cd minic
+
+- You should be able to just `cargo build` and have it
+  compile.  It might take a while, because we're pulling
+  in a few other crates which need to download and build
+  (like the JSON libraries)
+
+- After that, you can run it (from the minic folder) with
+    target/debug/minic
+
+- Java will need to be in your execution path, since it
+  needs to run ANTLR4 to generate JSON AST's.
+
+- PARAMETERS:
+    minic <filename.mini> <compile_mode> [optimizations]
+
+    compile_mode is one of the following:
+      -l  : LLVM stack-based mode
+      -lr : LLVM register-based mode
+      -a  : ARM stack-based mode
+      -ar : ARM register-based mode
+
+    [optimizations] are an optional flag starting with '-o' and
+    followed by any combination of:
+      c : constant propagation
+      d : dead code removal
+      e : empty block removal
+      t : trivial phi removal
+      q : quiet (removes most comments, for text output comparisons)
+      A : all optimizations
+
+    So,
+      -ot    : turns on trivial phis
+      -odc   : turns on dead code removal and constant propagation
+      -oA    : turns on all
+      -otcA  : _still_ turns on all
+
+- LLVM outputs a file called 'intermediate.ll'.
+  ARM outputs a file called 'intermediate.s'.
+
+- Those files need to be compiled along with (from ./minic)
+     src/helper.c   which contains the printInt and readInt functions
+
+- binaryConverter seems to get caught in an infinite loop in registry
+  ARM mode
+
+- Some of the other benchmarks (BenchMarkishTopics, TicTac, fact_sum, 
+  and mile1) seem to succeed or fail at random (or maybe depending
+  upon the optimization options)
+
+- Some of the other benchmarks (bert, brett, mixed, programBreaker,
+  and stats) always fail to match the reference output.
+
+- You can run any benchmark against the reference output with:
+    ./benchmark.sh <benchmarkname> <compile_mode> [optimizations]
+
+  Example:  ./benchmark.sh Fibonacci -ar -odc
+
+- You can run _all_ 20 benchmarks with:
+    ./all_benchmarks.sh <compile_mode> [optimizations]
+
+  Example:  ./all_benchmarks.sh -la -oA
+
+

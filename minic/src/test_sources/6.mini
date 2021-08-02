@@ -1,0 +1,16 @@
+# Testing while statements
+
+fun main() int {
+    int x;
+
+    x = read;
+    countdown(x);
+    return 0;
+}
+
+fun countdown(int a) void {
+    while ( a >= 0) {
+        print a endl;
+        a = a - 1;
+    }
+}

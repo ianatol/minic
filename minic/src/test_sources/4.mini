@@ -1,0 +1,9 @@
+# Adding a function call with params
+
+fun main() int {
+    return other(7, true);
+}
+
+fun other(int a, bool b) int {
+    return 0;
+}

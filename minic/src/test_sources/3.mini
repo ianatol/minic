@@ -1,0 +1,9 @@
+# Adding a function call with returns
+
+fun main() int {
+    return other();
+}
+
+fun other() int {
+    return 0;
+}
